@@ -1,0 +1,9 @@
+import React from 'react';
+
+function HeaderApp(props) {
+    return (
+        <header>Astronomy Picture of the Day</header>
+    );
+}
+
+export default HeaderApp;
