@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 
-import { Form, Button } from "react-bootstrap";
+import { Form, FormControl, InputGroup } from "react-bootstrap";
 
 const AppTitle = styled.h1`
   font-family: "Lato", sans-serif;
@@ -19,36 +19,43 @@ const ModeThemeChanger = styled.div`
   right: 10px;
 `;
 
+const Paragraph = styled.p`
+  margin-left: 1rem;
+  color: ${(props) => props.theme.secondary};
+`;
+
 function AppHeader(props) {
   const modeThemeChanger = useRef();
 
-  const handleThemeChange = (changeEvent) => {
-    props.setThemeColor(changeEvent.target.value==="dark" ? dark : light);
-  };
   return (
     <header>
       <ModeThemeChanger>
         <Form>
           <Form.Switch
-            onChange={()=> props.setLightTheme(!props.isLightTheme)}
+            onChange={() => props.setLightTheme(!props.isLightTheme)}
             ref={modeThemeChanger}
             type="switch"
             id="custom-switch"
             label="switch to dark mode"
             value="dark"
           />
-
         </Form>
       </ModeThemeChanger>
       <AppTitle>Astronomy Picture of the Day</AppTitle>
 
-      <p>
-        This is a simple hero unit, a simple jumbotron-style component for
-        calling extra attention to featured content or information.
-      </p>
-      <p>
-        <Button variant="primary">Learn more</Button>
-      </p>
+      <Paragraph>
+        This is place where you can see pictures chosen by NASA as Astronomy
+        Picture of the Day. Set the date and explore!
+      </Paragraph>
+      <Paragraph>
+        <InputGroup className="mb-3">
+
+          <FormControl
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+          />
+        </InputGroup>
+      </Paragraph>
     </header>
   );
 }
