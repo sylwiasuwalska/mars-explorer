@@ -1,11 +1,24 @@
-import React from 'react';
-import '../styles/App.css';
+import React, {Fragment, useState} from "react";
+
+import styled, { ThemeProvider } from "styled-components";
+import GlobalStyle, { dark, light } from "../theme/globalStyle";
+import AppHeader from "./AppHeader";
+
+
+
 
 function App() {
-  return (
-    <div className="App">
+    const [isLightTheme, setLightTheme] = useState(true);
 
-    </div>
+
+  return (
+    <Fragment>
+      <ThemeProvider theme={isLightTheme ? light : dark}>
+        <GlobalStyle />
+        <AppHeader setLightTheme={setLightTheme} isLightTheme={isLightTheme} />
+
+      </ThemeProvider>
+    </Fragment>
   );
 }
 
