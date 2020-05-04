@@ -14,13 +14,14 @@ function App() {
 
   return (
     <Fragment>
-        <Container>
+
       <ThemeProvider theme={isLightTheme ? light : dark}>
         <GlobalStyle />
         <AppHeader setLightTheme={setLightTheme} isLightTheme={isLightTheme} />
-
+          <Container>
+          </Container>
       </ThemeProvider>
-        </Container>
+
     </Fragment>
   );
 }

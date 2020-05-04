@@ -1,23 +1,22 @@
-import { createGlobalStyle } from 'styled-components';
-
+import { createGlobalStyle } from "styled-components";
 
 export const light = {
-    primary: '#111111',
-    secondary: '#1A1A1A',
-    danger: '#8301FE',
-    light: '#f4f4f4',
-    dark: '#999999',
-    background: '#f4f4f4'
-}
+  primary: "#111111",
+  secondary: "#1A1A1A",
+  danger: "#8301FE",
+  light: "#f4f4f4",
+  dark: "#999999",
+  background: "url(https://apod.nasa.gov/apod/image/2004/MVP_Aspinall_2048.jpg)"
+};
 
 export const dark = {
-    primary: '#999999',
-    secondary: '#FFFFFF',
-    danger: '#8301FE',
-    light: '#1A1A1A',
-    dark: '#111111',
-    background: '#000000'
-}
+  primary: "#999999",
+  secondary: "#FFFFFF",
+  danger: "#8301FE",
+  light: "#1A1A1A",
+  dark: "#111111",
+  background: "url(https://apod.nasa.gov/apod/image/2004/STSCI-H-p2016a-m-2000x1374.jpg)"
+};
 
 const GlobalStyle = createGlobalStyle`
   
@@ -31,7 +30,9 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   
-    background-color: ${props => props.theme.background};
+
+    background-image: ${(props) => props.theme.background};
+    background-size: cover;
   }
  
   code {

@@ -1,13 +1,21 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import GlobalStyle, { dark, light } from "../theme/globalStyle";
 
-import { Form, FormControl, InputGroup } from "react-bootstrap";
+import {
+  Form,
+  FormControl,
+  InputGroup,
+  Jumbotron,
+  Container,
+} from "react-bootstrap";
 
+const JumbotronBackground = styled(Jumbotron)`
+  background-color: transparent;
+`
 const AppTitle = styled.h1`
   font-family: "Lato", sans-serif;
   font-weight: 900;
-  font-size: 5rem;
+  font-size: 4rem;
   color: ${(props) => props.theme.primary};
   margin-left: 1rem;
 `;
@@ -25,18 +33,15 @@ const Paragraph = styled.p`
 `;
 
 function AppHeader(props) {
-  const modeThemeChanger = useRef();
-
   return (
-    <header>
+    <JumbotronBackground fluid>
       <ModeThemeChanger>
         <Form>
           <Form.Switch
             onChange={() => props.setLightTheme(!props.isLightTheme)}
-            ref={modeThemeChanger}
             type="switch"
             id="custom-switch"
-            label="switch to dark mode"
+            label={props.isLightTheme ? "🌜" : "🌞"}
             value="dark"
           />
         </Form>
@@ -49,14 +54,13 @@ function AppHeader(props) {
       </Paragraph>
       <Paragraph>
         <InputGroup className="mb-3">
-
           <FormControl
             aria-label="Default"
             aria-describedby="inputGroup-sizing-default"
           />
         </InputGroup>
       </Paragraph>
-    </header>
+    </JumbotronBackground>
   );
 }
 
