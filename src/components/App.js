@@ -38,10 +38,10 @@ function App() {
       <ThemeProvider theme={isLightTheme ? light : dark}>
         <GlobalStyle />
         <AppHeader setLightTheme={setLightTheme} isLightTheme={isLightTheme} />
-        <Container>
+
           <Input handleSubmit={handleSubmit} />
           <PictureCard pictureData={pictureData} />
-        </Container>
+
       </ThemeProvider>
     </Fragment>
   );

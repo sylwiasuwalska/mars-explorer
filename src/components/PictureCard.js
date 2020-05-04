@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 
 const CardContainer = styled.div`
   text-align: center;
-  margin-bottom: 2vh;
+  padding: 2vh;
+  background-color: ${(props) => props.theme.dark};
 `;
 
 const Image = styled.div`
   background-image: url(${(props) => props.url});
   background-size: cover;
-  background-position: center; 
+  background-position: 0 0;
   height: 600px;
   width: 100%;
   border: 1px solid ${(props) => props.theme.secondary};
@@ -30,31 +31,37 @@ const Link = styled.a`
   margin: 10px;
   padding: 10px 20px;
   text-decoration: none;
-  
+
   &:hover {
-  text-decoration: none;
+    text-decoration: none;
   }
 `;
 
 function PictureCard(props) {
   return (
-    <CardContainer>
-      <Row>
-        <Col sm={8}>
-          <Title>{props.pictureData.title}</Title>
-          <Image url={props.pictureData.url} />
-        </Col>
-        <Col sm={4}>
-          <Paragraph>Explanation: {props.pictureData.explanation}</Paragraph>
-          <Paragraph>
-            Copyright:{" "}
-            {props.pictureData.copyright
-              ? props.pictureData.copyright
-              : "unknown"}
-          </Paragraph>
-          <Link href={props.pictureData.hdurl}>HD version</Link>
-        </Col>
-      </Row>
+    <CardContainer url={props.pictureData.url}>
+      <Container>
+        <Row>
+          <Col>
+            <Title>{props.pictureData.title}</Title>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={8}>
+            <Image url={props.pictureData.url} />
+          </Col>
+          <Col sm={4}>
+            <Paragraph>Explanation: {props.pictureData.explanation}</Paragraph>
+            <Paragraph>
+              Copyright:{" "}
+              {props.pictureData.copyright
+                ? props.pictureData.copyright
+                : "unknown"}
+            </Paragraph>
+            <Link href={props.pictureData.hdurl}>HD version</Link>
+          </Col>
+        </Row>
+      </Container>
     </CardContainer>
   );
 }
