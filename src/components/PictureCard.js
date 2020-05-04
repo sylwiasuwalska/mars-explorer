@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Col, Row, Container } from "react-bootstrap";
+import ModalPicture from "./ModalPicture";
 
 const CardContainer = styled.div`
   text-align: center;
@@ -11,10 +12,11 @@ const CardContainer = styled.div`
 const Image = styled.div`
   background-image: url(${(props) => props.url});
   background-size: cover;
-  background-position: 0 0;
+  background-position: center;
   height: 600px;
   width: 100%;
   border: 1px solid ${(props) => props.theme.secondary};
+  cursor: pointer;
 `;
 
 const Title = styled.h2`
@@ -38,6 +40,10 @@ const Link = styled.a`
 `;
 
 function PictureCard(props) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <CardContainer url={props.pictureData.url}>
       <Container>
@@ -48,10 +54,10 @@ function PictureCard(props) {
         </Row>
         <Row>
           <Col sm={8}>
-            <Image url={props.pictureData.url} />
+            <Image url={props.pictureData.url} onClick={handleShow} />
           </Col>
           <Col sm={4}>
-            <Paragraph>Explanation: {props.pictureData.explanation}</Paragraph>
+            <Paragraph>{props.pictureData.explanation}</Paragraph>
             <Paragraph>
               Copyright:{" "}
               {props.pictureData.copyright
@@ -62,6 +68,12 @@ function PictureCard(props) {
           </Col>
         </Row>
       </Container>
+      <ModalPicture
+        show={show}
+        handleClose={handleClose}
+        url={props.pictureData.url}
+        title={props.pictureData.title}
+      />
     </CardContainer>
   );
 }

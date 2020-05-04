@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
 import Input from "./Input";
+
 import Container from "react-bootstrap/Container";
 import PictureCard from "./PictureCard";
 
