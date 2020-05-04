@@ -4,13 +4,11 @@ import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
 import Input from "./Input";
-
-import Container from "react-bootstrap/Container";
 import PictureCard from "./PictureCard";
 
 function App() {
   const [isLightTheme, setLightTheme] = useState(true);
-  const [date, setDate] = useState("2020-04-03");
+  const [date, setDate] = useState("2020-01-02");
   const [pictureData, setPictureData] = useState("");
 
   const handleSubmit = (e) => {
