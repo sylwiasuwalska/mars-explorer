@@ -1,15 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
+import {today} from "../helpers"
+
 
 const FormContainer = styled(Form)`
   color: ${(props) => props.theme.secondary};
   margin: 40px auto;
   justify-content: center;
+
   @media (max-width: 768px) {
     max-width: 80%;
   }
 `;
+
+const InputGroupSquare = styled(InputGroup.Text)`
+  border-radius: 0;
+`;
+
+const ButtonSquare = styled(Button)`
+  border-radius: 0;
+`;
+
 
 const InputContainer = styled(Form.Control)`
   width: 200px;
@@ -30,19 +42,20 @@ function Input(props) {
         </InputGroup>
         <InputGroup>
           <InputGroup.Prepend>
-            <InputGroup.Text id="inputGroupPrepend">🔍</InputGroup.Text>
+            <InputGroupSquare id="inputGroupPrepend" className="no-radius">🔍</InputGroupSquare>
           </InputGroup.Prepend>
           <InputContainer
             ref={inputRef}
             type="date"
             min="1995-06-16"
+            max={today}
             name="date"
             required
             pattern="\d{4}-\d{2}-\d{2}"
           />{" "}
-          <Button variant="secondary" type="submit">
+          <ButtonSquare variant="secondary" type="submit">
             Submit
-          </Button>
+          </ButtonSquare>
         </InputGroup>
 
       </FormContainer>

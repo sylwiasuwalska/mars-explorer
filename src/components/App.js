@@ -5,9 +5,10 @@ import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
 import Input from "./Input";
 import PictureCard from "./PictureCard";
+import {today} from "../helpers"
 
 function App() {
-  const today = new Date().toISOString().slice(0, 10)
+
   const [isLightTheme, setLightTheme] = useState(false);
   const [date, setDate] = useState(today);
   const [pictureData, setPictureData] = useState("");
