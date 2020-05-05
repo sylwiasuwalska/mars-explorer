@@ -10,6 +10,7 @@ function App() {
   const [isLightTheme, setLightTheme] = useState(false);
   const [date, setDate] = useState("2020-01-05");
   const [pictureData, setPictureData] = useState("");
+  const [animate, setAnimate] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,11 +19,13 @@ function App() {
 
   const fetchData = async (date) => {
     try {
+      setAnimate(false);
       const response = await axios.get(
         `https://api.nasa.gov/planetary/apod?date=${date}&api_key=IrU9YCmzeRGcHbJULHNnNWTIhNitiAjxTegDI4XJ`
       );
       console.log(response.data);
       setPictureData(response.data);
+      setAnimate(true);
     } catch (error) {
       console.error(error);
     }
@@ -39,7 +42,7 @@ function App() {
         <AppHeader setLightTheme={setLightTheme} isLightTheme={isLightTheme} />
 
           <Input handleSubmit={handleSubmit} />
-          <PictureCard pictureData={pictureData} />
+          <PictureCard pictureData={pictureData} animate={animate} />
 
       </ThemeProvider>
     </Fragment>
