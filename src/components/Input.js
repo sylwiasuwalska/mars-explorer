@@ -18,7 +18,6 @@ const FormContainer = styled(Form)`
 
 const InputContainer = styled(Form.Control)`
   min-width: 60%;
-
 `;
 
 function Input(props) {

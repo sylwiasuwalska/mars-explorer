@@ -10,9 +10,10 @@ const CardContainer = styled.div`
 `;
 
 const Image = styled.div`
+
   background-image: url(${(props) => props.url});
   background-size: cover;
-  background-position: center;
+  background-position: 50% 50%;
   height: 800px;
   width: 100%;
   border: 1px solid ${(props) => props.theme.secondary};
@@ -20,25 +21,47 @@ const Image = styled.div`
 `;
 
 const Title = styled.h2`
+  display: flex;
   font-family: "Grand Hotel", cursive;
   color: ${(props) => props.theme.secondary};
   font-size: 3rem;
-  padding: 2rem;
+
 `;
 
-const Paragraph = styled.p`
+const Paragraph = styled.div`
+
+  align-items: center;
+  position: relative;
+  left: -30%;
+  top: 5%;
+  width: 130%;
   color: ${(props) => props.theme.secondary};
+  background-color: ${(props) => props.theme.light};
   text-align: justify;
+  padding: 2rem;
+
+  p {
+    font-family: 'Raleway', sans-serif;
+    padding: 8px;
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    position: initial;
+    width: 100%;
+  }
 `;
+
 const Link = styled.a`
+  align-content: center;
   background-color: ${(props) => props.theme.danger};
   color: ${(props) => props.theme.secondary};
   margin: 10px;
   padding: 10px 20px;
-  text-decoration: none;
 
   &:hover {
     text-decoration: none;
+    cursor: pointer;
+    color: ${(props) => props.theme.secondary};
   }
 `;
 
@@ -50,23 +73,21 @@ function PictureCard(props) {
   return (
     <CardContainer url={props.pictureData.url}>
       <Row>
-        <Col>
-          <Title>{props.pictureData.title}</Title>
-        </Col>
-      </Row>
-      <Row>
         <Col sm={8}>
           <Image url={props.pictureData.url} onClick={handleShow} />
         </Col>
         <Col sm={4}>
-          <Paragraph>{props.pictureData.explanation}</Paragraph>
           <Paragraph>
-            Copyright:{" "}
-            {props.pictureData.copyright
-              ? props.pictureData.copyright
-              : "unknown"}
+            <Title>{props.pictureData.title}</Title>
+            <p>{props.pictureData.explanation}</p>
+            <p>
+              Copyright:{" "}
+              {props.pictureData.copyright
+                ? props.pictureData.copyright
+                : "unknown"}
+            </p>
+            <Link href={props.pictureData.hdurl}>HD version</Link>
           </Paragraph>
-          <Link href={props.pictureData.hdurl}>HD version</Link>
         </Col>
       </Row>
 
