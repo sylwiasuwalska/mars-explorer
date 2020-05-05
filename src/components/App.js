@@ -7,8 +7,8 @@ import Input from "./Input";
 import PictureCard from "./PictureCard";
 
 function App() {
-  const [isLightTheme, setLightTheme] = useState(true);
-  const [date, setDate] = useState("2020-01-02");
+  const [isLightTheme, setLightTheme] = useState(false);
+  const [date, setDate] = useState("2020-01-05");
   const [pictureData, setPictureData] = useState("");
 
   const handleSubmit = (e) => {
