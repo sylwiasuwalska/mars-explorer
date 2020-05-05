@@ -10,7 +10,6 @@ const CardContainer = styled.div`
 `;
 
 const Image = styled.div`
-
   background-image: url(${(props) => props.url});
   background-size: cover;
   background-position: 50% 50%;
@@ -21,28 +20,28 @@ const Image = styled.div`
 `;
 
 const Title = styled.h2`
-  display: flex;
-  font-family: "Grand Hotel", cursive;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
   color: ${(props) => props.theme.secondary};
-  font-size: 3rem;
-
+  font-size: 2rem;
 `;
 
 const Paragraph = styled.div`
-
+  display: flex;
+  flex-flow: wrap;
   align-items: center;
   position: relative;
-  left: -30%;
-  top: 5%;
-  width: 130%;
+  left: -40%;
+  top: 10%;
+  width: 140%;
   color: ${(props) => props.theme.secondary};
   background-color: ${(props) => props.theme.light};
   text-align: justify;
   padding: 2rem;
 
   p {
-    font-family: 'Raleway', sans-serif;
-    padding: 8px;
+    font-family: "Raleway", sans-serif;
+    padding-bottom: 8px;
     margin: 0;
   }
   @media (max-width: 768px) {
@@ -52,7 +51,9 @@ const Paragraph = styled.div`
 `;
 
 const Link = styled.a`
-  align-content: center;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
   background-color: ${(props) => props.theme.danger};
   color: ${(props) => props.theme.secondary};
   margin: 10px;
