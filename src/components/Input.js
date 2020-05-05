@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import {Button, Container, Form, InputGroup} from "react-bootstrap";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 
 const FormContainer = styled(Form)`
+  color: ${(props) => props.theme.secondary};
   margin: 40px auto;
   justify-content: center;
   @media (max-width: 768px) {
@@ -24,21 +25,25 @@ function Input(props) {
   return (
     <Container>
       <FormContainer onSubmit={props.handleSubmit}>
-          <InputGroup>
+        <InputGroup>
+          <Form.Label>Set the date to see the picture:</Form.Label>
+        </InputGroup>
+        <InputGroup>
           <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroupPrepend">🔍</InputGroup.Text>
+            <InputGroup.Text id="inputGroupPrepend">🔍</InputGroup.Text>
           </InputGroup.Prepend>
-        <InputContainer
-          ref={inputRef}
-          type="date"
-          min="1995-06-16"
-          name="date"
-          required
-          pattern="\d{4}-\d{2}-\d{2}"
-        /> <Button variant="secondary" type="submit">
-              Submit
+          <InputContainer
+            ref={inputRef}
+            type="date"
+            min="1995-06-16"
+            name="date"
+            required
+            pattern="\d{4}-\d{2}-\d{2}"
+          />{" "}
+          <Button variant="secondary" type="submit">
+            Submit
           </Button>
-          </InputGroup>
+        </InputGroup>
 
       </FormContainer>
     </Container>
