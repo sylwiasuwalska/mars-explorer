@@ -7,10 +7,13 @@ import Input from "./Input";
 import PictureCard from "./PictureCard";
 
 function App() {
+  const today = new Date().toISOString().slice(0, 10)
   const [isLightTheme, setLightTheme] = useState(false);
-  const [date, setDate] = useState("2010-01-05");
+  const [date, setDate] = useState(today);
   const [pictureData, setPictureData] = useState("");
   const [animate, setAnimate] = useState(false);
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
