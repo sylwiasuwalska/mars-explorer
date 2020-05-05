@@ -47,7 +47,6 @@ const Image = styled.div`
   background-position: 50% 50%;
   height: 800px;
   width: 100%;
-  border: 1px solid ${(props) => props.theme.secondary};
   cursor: pointer;
 `;
 
