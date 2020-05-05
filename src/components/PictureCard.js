@@ -72,6 +72,7 @@ const Paragraph = styled.div`
   padding: 2rem;
 
   p {
+  flex-basis: 100%;
     font-family: "Raleway", sans-serif;
     padding-bottom: 8px;
     margin: 0;
@@ -116,6 +117,7 @@ function PictureCard(props) {
           <Col sm={4}>
             <Paragraph>
               <Title>{props.pictureData.title}</Title>
+              <p>{props.pictureData.date}</p>
               <p>{props.pictureData.explanation}</p>
               <p>
                 Copyright:{" "}
