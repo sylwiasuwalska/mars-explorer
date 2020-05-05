@@ -17,11 +17,16 @@ const AppTitle = styled.h1`
   font-size: 4rem;
   color: #fff;
   margin-left: 10%;
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    margin: 0;
+  }
 `;
 
 const ModeThemeChanger = styled.div`
   position: absolute;
-  top: 20px;
+  top: 30px;
   right: 30px;
 `;
 
@@ -29,6 +34,11 @@ const Paragraph = styled.p`
   margin-left: 10%;
   font-size: 1.5rem;
   color: #fff;
+
+  @media (max-width: 768px) {
+    margin: 0;
+    font-size: 1rem;
+  }
 `;
 
 function AppHeader(props) {
