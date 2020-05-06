@@ -54,9 +54,9 @@ function AppHeader(props) {
             id="custom-switch"
             label={
               props.isLightTheme ? (
-                <FontAwesomeIcon icon={faMoon} size="1.5x" />
+                <FontAwesomeIcon icon={faMoon} />
               ) : (
-                <FontAwesomeIcon icon={faSun} size="1.5x" />
+                <FontAwesomeIcon icon={faSun} />
               )
             }
             value="dark"
