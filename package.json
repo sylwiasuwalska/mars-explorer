@@ -15,8 +15,6 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
-    "react-lightbox-component": "^1.2.1",
-    "react-parallax": "^3.0.3",
     "react-scripts": "3.4.1",
     "react-transition-group": "^4.3.0",
     "react-waypoint": "^9.0.2",
