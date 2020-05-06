@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
 import Input from "./Input";

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import {today} from "../helpers"
@@ -42,7 +42,7 @@ function Input(props) {
         </InputGroup>
         <InputGroup>
           <InputGroup.Prepend>
-            <InputGroupSquare id="inputGroupPrepend" className="no-radius">🔍</InputGroupSquare>
+            <InputGroupSquare id="inputGroupPrepend" className="no-radius"><span role="img" aria-label="search icon">🔍</span></InputGroupSquare>
           </InputGroup.Prepend>
           <InputContainer
             ref={inputRef}
@@ -54,7 +54,7 @@ function Input(props) {
             pattern="\d{4}-\d{2}-\d{2}"
           />{" "}
           <ButtonSquare variant="secondary" type="submit">
-            Submit
+            Show picuture
           </ButtonSquare>
         </InputGroup>
 

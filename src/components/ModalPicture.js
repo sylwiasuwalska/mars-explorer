@@ -13,7 +13,7 @@ function ModalPicture(props) {
         <Modal.Title>{props.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <img src={props.url} />
+        <img src={props.url} alt="picture_of_the_day" />
       </Modal.Body>
     </ModalContainer>
   );
