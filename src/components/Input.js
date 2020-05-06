@@ -57,7 +57,7 @@ function Input(props) {
             pattern="\d{4}-\d{2}-\d{2}"
           />{" "}
           <ButtonSquare variant="secondary" type="submit">
-            Show picuture
+            Show!
           </ButtonSquare>
         </InputGroup>
 
