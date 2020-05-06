@@ -110,10 +110,10 @@ function PictureCard(props) {
     <CSSTransition in={props.animate} timeout={1500} classNames="fade">
       <CardContainer url={props.pictureData.url}>
         <Row>
-          <Col sm={8}>
+          <Col md={8}>
             <Image url={props.pictureData.url} onClick={handleShow} />
           </Col>
-          <Col sm={4}>
+          <Col md={4}>
             <Paragraph>
               <Title>{props.pictureData.title}</Title>
               <p>{props.pictureData.date}</p>
