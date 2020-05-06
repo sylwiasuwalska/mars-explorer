@@ -7,8 +7,6 @@ export const light = {
     light: "#f4f4f4",
     dark: "#999999",
     backgroundColor: "#f4f4f4",
-    background:
-        "url(https://apod.nasa.gov/apod/image/2004/MVP_Aspinall_2048.jpg)",
 };
 
 export const dark = {
@@ -18,8 +16,6 @@ export const dark = {
     light: "#1A1A1A",
     dark: "#111111",
     backgroundColor: "#000",
-    background:
-        "url(https://apod.nasa.gov/apod/image/2004/STSCI-H-p2016a-m-2000x1374.jpg)",
 };
 
 const GlobalStyle = createGlobalStyle`
