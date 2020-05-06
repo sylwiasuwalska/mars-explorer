@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Form, Jumbotron } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon} from "@fortawesome/free-solid-svg-icons";
 
 const JumbotronBackground = styled(Jumbotron)`
   background-image: url("https://apod.nasa.gov/apod/image/2004/STSCI-H-p2016a-m-2000x1374.jpg");
