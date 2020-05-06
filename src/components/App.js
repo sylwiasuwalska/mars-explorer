@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import { ThemeProvider } from "styled-components";
-import { Waypoint } from "react-waypoint";
+
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
 import Input from "./Input";
@@ -12,7 +12,6 @@ function App() {
   const [isLightTheme, setLightTheme] = useState(false);
   const [date, setDate] = useState(today);
   const [pictureData, setPictureData] = useState("");
-  const [animate, setAnimate] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,12 +43,9 @@ function App() {
         <AppHeader setLightTheme={setLightTheme} isLightTheme={isLightTheme} />
 
         <Input handleSubmit={handleSubmit} />
-        <PictureCard pictureData={pictureData}  />
-        <Waypoint onEnter={() => setAnimate(true)}>
-          <div>
-            <PictureCard pictureData={pictureData} animate={animate} />
-          </div>
-        </Waypoint>
+        <PictureCard pictureData={pictureData} />
+
+        <PictureCard pictureData={pictureData}/>
       </ThemeProvider>
     </Fragment>
   );

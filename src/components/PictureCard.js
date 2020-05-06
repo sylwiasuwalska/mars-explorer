@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Col, Row} from "react-bootstrap";
+import { Waypoint } from "react-waypoint";
+import { Col, Row } from "react-bootstrap";
 import ModalPicture from "./ModalPicture";
 import { CSSTransition } from "react-transition-group";
 
@@ -71,7 +72,7 @@ const Paragraph = styled.div`
   padding: 2rem;
 
   p {
-  flex-basis: 100%;
+    flex-basis: 100%;
     font-family: "Raleway", sans-serif;
     padding-bottom: 8px;
     margin: 0;
@@ -99,6 +100,7 @@ const Link = styled.a`
 `;
 
 function PictureCard(props) {
+  const [animate, setAnimate] = useState(false);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -107,36 +109,43 @@ function PictureCard(props) {
   useEffect(() => {});
 
   return (
-    <CSSTransition in={props.animate} timeout={1500} classNames="fade">
-      <CardContainer url={props.pictureData.url}>
-        <Row>
-          <Col md={8}>
-            <Image url={props.pictureData.url} onClick={handleShow} />
-          </Col>
-          <Col md={4}>
-            <Paragraph>
-              <Title>{props.pictureData.title}</Title>
-              <p>{props.pictureData.date}</p>
-              <p>{props.pictureData.explanation}</p>
-              <p>
-                Copyright:{" "}
-                {props.pictureData.copyright
-                  ? props.pictureData.copyright
-                  : "unknown"}
-              </p>
-              <Link href={props.pictureData.hdurl}>HD version</Link>
-            </Paragraph>
-          </Col>
-        </Row>
+    <Waypoint
+      onEnter={() => setAnimate(true)}
+      onLeave={() => setAnimate(false)}
+    >
+      <div>
+        <CSSTransition in={animate} timeout={1500} classNames="fade">
+          <CardContainer url={props.pictureData.url}>
+            <Row>
+              <Col md={8}>
+                <Image url={props.pictureData.url} onClick={handleShow} />
+              </Col>
+              <Col md={4}>
+                <Paragraph>
+                  <Title>{props.pictureData.title}</Title>
+                  <p>{props.pictureData.date}</p>
+                  <p>{props.pictureData.explanation}</p>
+                  <p>
+                    Copyright:{" "}
+                    {props.pictureData.copyright
+                      ? props.pictureData.copyright
+                      : "unknown"}
+                  </p>
+                  <Link href={props.pictureData.hdurl}>HD version</Link>
+                </Paragraph>
+              </Col>
+            </Row>
 
-        <ModalPicture
-          show={show}
-          handleClose={handleClose}
-          url={props.pictureData.url}
-          title={props.pictureData.title}
-        />
-      </CardContainer>
-    </CSSTransition>
+            <ModalPicture
+              show={show}
+              handleClose={handleClose}
+              url={props.pictureData.url}
+              title={props.pictureData.title}
+            />
+          </CardContainer>
+        </CSSTransition>
+      </div>
+    </Waypoint>
   );
 }
 
