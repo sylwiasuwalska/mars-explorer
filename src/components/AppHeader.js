@@ -26,10 +26,12 @@ const AppTitle = styled.h1`
 `;
 
 const ModeThemeChanger = styled.div`
-  position: absolute;
+  position: fixed;
   top: 30px;
   right: 30px;
   color: #fff;
+  z-index: 10;
+  
 `;
 
 const Paragraph = styled.p`
@@ -54,9 +56,9 @@ function AppHeader(props) {
             id="custom-switch"
             label={
               props.isLightTheme ? (
-                <FontAwesomeIcon icon={faMoon} />
+                <FontAwesomeIcon icon={faMoon}/>
               ) : (
-                <FontAwesomeIcon icon={faSun} />
+                <FontAwesomeIcon icon={faSun}/>
               )
             }
             value="dark"
