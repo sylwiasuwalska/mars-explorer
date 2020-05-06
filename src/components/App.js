@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import { ThemeProvider } from "styled-components";
+import moment from 'moment';
 
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
@@ -18,22 +19,31 @@ function App() {
     setDate(e.target.date.value);
   };
 
-  const fetchData = async (date) => {
+  const fetchPictureData = async (date) => {
     try {
-      //setAnimate(false);
       const response = await axios.get(
         `https://api.nasa.gov/planetary/apod?date=${date}&api_key=IrU9YCmzeRGcHbJULHNnNWTIhNitiAjxTegDI4XJ`
       );
-      console.log(response.data);
       setPictureData(response.data);
-      // setAnimate(true);
     } catch (error) {
       console.error(error);
+      //TODO handling error
     }
   };
 
+  const getLastTenDays = (date) => {
+    let dates=[];
+    for (let i=0; i<10; i++) {
+      var d = new Date();
+      d.setDate(d.getDate()-i);
+      dates[i]=moment().subtract(i, 'days').format('YYYY-MM-DD');
+    }
+    return dates;
+  }
+
   useEffect(() => {
-    fetchData(date);
+    fetchPictureData(date);
+    console.log(getLastTenDays(today));
   }, [date]);
 
   return (
@@ -41,10 +51,8 @@ function App() {
       <ThemeProvider theme={isLightTheme ? light : dark}>
         <GlobalStyle />
         <AppHeader setLightTheme={setLightTheme} isLightTheme={isLightTheme} />
-
         <Input handleSubmit={handleSubmit} />
         <PictureCard pictureData={pictureData} />
-
         <PictureCard pictureData={pictureData}/>
       </ThemeProvider>
     </Fragment>
