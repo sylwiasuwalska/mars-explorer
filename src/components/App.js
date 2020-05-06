@@ -34,16 +34,19 @@ function App() {
   const getLastTenDays = (date) => {
     let dates=[];
     for (let i=0; i<10; i++) {
-      var d = new Date();
-      d.setDate(d.getDate()-i);
-      dates[i]=moment().subtract(i, 'days').format('YYYY-MM-DD');
+      dates[i]=moment().subtract(i+1, 'days').format('YYYY-MM-DD');
     }
     return dates;
   }
 
+  const fetchTenLastPictures = (date) => {
+    const dates = getLastTenDays(date)
+
+  }
+
   useEffect(() => {
     fetchPictureData(date);
-    console.log(getLastTenDays(today));
+    fetchTenLastPictures(today)
   }, [date]);
 
   return (
