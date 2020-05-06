@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
 import { Form, Jumbotron } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const JumbotronBackground = styled(Jumbotron)`
   background-image: url("https://apod.nasa.gov/apod/image/2004/STSCI-H-p2016a-m-2000x1374.jpg");
@@ -28,6 +29,7 @@ const ModeThemeChanger = styled.div`
   position: absolute;
   top: 30px;
   right: 30px;
+  color: #fff;
 `;
 
 const Paragraph = styled.p`
@@ -50,7 +52,13 @@ function AppHeader(props) {
             onChange={() => props.setLightTheme(!props.isLightTheme)}
             type="switch"
             id="custom-switch"
-            label={props.isLightTheme ? "🌙" : "🌞"}
+            label={
+              props.isLightTheme ? (
+                <FontAwesomeIcon icon={faMoon} size="1.5x" />
+              ) : (
+                <FontAwesomeIcon icon={faSun} size="1.5x" />
+              )
+            }
             value="dark"
           />
         </Form>

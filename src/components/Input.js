@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import {today} from "../helpers"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 
 
 const FormContainer = styled(Form)`
@@ -42,7 +45,7 @@ function Input(props) {
         </InputGroup>
         <InputGroup>
           <InputGroup.Prepend>
-            <InputGroupSquare id="inputGroupPrepend" className="no-radius"><span role="img" aria-label="search icon">🔍</span></InputGroupSquare>
+            <InputGroupSquare id="inputGroupPrepend" className="no-radius"><FontAwesomeIcon icon={faSearch} size="lg" /></InputGroupSquare>
           </InputGroup.Prepend>
           <InputContainer
             ref={inputRef}
