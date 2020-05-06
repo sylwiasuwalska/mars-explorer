@@ -31,7 +31,6 @@ const ModeThemeChanger = styled.div`
   right: 30px;
   color: #fff;
   z-index: 10;
-  
 `;
 
 const Paragraph = styled.p`
