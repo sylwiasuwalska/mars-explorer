@@ -9,8 +9,6 @@
 * [Setup](#available-scripts)
 * [Features](#features)
 * [Status](#status)
-* [Inspiration](#inspiration)
-* [Contact](#contact)
 
 ## General info
 Based on NASA API website fetch data about chosen Picture of the Day. 
