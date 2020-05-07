@@ -63,7 +63,6 @@ const Paragraph = styled.div`
   flex-flow: wrap;
   align-items: center;
   position: relative;
-  //transform: translateX(0%);
   left: ${(props) => props.shift};
   top: 10%;
   width: 140%;
