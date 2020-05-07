@@ -26,7 +26,6 @@ const Line = styled.hr`
 }`;
 
 function TenLastPictures(props) {
-  console.log(props.tenLastPictures);
   const tenLastPicturesCard = Object.values(props.tenLastPictures).map(
     (element, index) => {
       return <PictureCard key={index} pictureData={element} />;

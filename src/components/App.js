@@ -33,7 +33,7 @@ function App() {
     }
   };
 
-  const getLastTenDays = (date) => {
+  const getLastTenDays = () => {
     let dates = [];
     for (let i = 0; i < 10; i++) {
       dates[i] = moment()
@@ -43,8 +43,8 @@ function App() {
     return dates;
   };
 
-  const fetchTenLastPictures = (date) => {
-    const dates = getLastTenDays(date);
+  const fetchTenLastPictures = () => {
+    const dates = getLastTenDays();
     const tenLastPictures = dates.map(async (element) => {
       try {
         const response = await axios.get(
@@ -63,7 +63,7 @@ function App() {
 
   useEffect(() => {
     fetchPictureData(date);
-    fetchTenLastPictures(today);
+    fetchTenLastPictures();
   }, [date]);
 
   return (
