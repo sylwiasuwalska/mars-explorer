@@ -1,18 +1,20 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import { ThemeProvider } from "styled-components";
-import moment from 'moment';
+import moment from "moment";
 
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
 import Input from "./Input";
 import PictureCard from "./PictureCard";
+import TenLastPictures from "./TenLastPictures";
 import { today } from "../helpers";
 
 function App() {
   const [isLightTheme, setLightTheme] = useState(false);
   const [date, setDate] = useState(today);
   const [pictureData, setPictureData] = useState("");
+  const [tenLastPictures, setTenLastPictures] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,22 +34,36 @@ function App() {
   };
 
   const getLastTenDays = (date) => {
-    let dates=[];
-    for (let i=0; i<10; i++) {
-      dates[i]=moment().subtract(i+1, 'days').format('YYYY-MM-DD');
+    let dates = [];
+    for (let i = 0; i < 10; i++) {
+      dates[i] = moment()
+        .subtract(i + 1, "days")
+        .format("YYYY-MM-DD");
     }
     return dates;
-  }
+  };
 
   const fetchTenLastPictures = (date) => {
-    const dates = getLastTenDays(date)
-
-
-  }
+    const dates = getLastTenDays(date);
+    const tenLastPictures = dates.map(async (element) => {
+      try {
+        const response = await axios.get(
+          `https://api.nasa.gov/planetary/apod?date=${element}&api_key=IrU9YCmzeRGcHbJULHNnNWTIhNitiAjxTegDI4XJ`
+        );
+        return response.data;
+      } catch (error) {
+        console.error(error);
+        //TODO handling error
+      }
+    });
+    Promise.all(tenLastPictures).then((data) => {
+      setTenLastPictures(data);
+    });
+  };
 
   useEffect(() => {
     fetchPictureData(date);
-    fetchTenLastPictures(today)
+    fetchTenLastPictures(today);
   }, [date]);
 
   return (
@@ -57,7 +73,7 @@ function App() {
         <AppHeader setLightTheme={setLightTheme} isLightTheme={isLightTheme} />
         <Input handleSubmit={handleSubmit} />
         <PictureCard pictureData={pictureData} />
-        <PictureCard pictureData={pictureData}/>
+        <TenLastPictures tenLastPictures={tenLastPictures} />
       </ThemeProvider>
     </Fragment>
   );
