@@ -18,9 +18,6 @@ Based on NASA API website fetch data about chosen Picture of the Day.
 ## Live
 You can see live version here: https://sylwiasuwalska.github.io/nasa-explorer/
 
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-
 ## Technologies
 * ReactJS with Hooks, version 16.13.1
 * React Bootstrap, version 1.0.1
@@ -29,6 +26,13 @@ You can see live version here: https://sylwiasuwalska.github.io/nasa-explorer/
 * axios
 * moment.js
 * waypoint
+
+## Screenshots
+![dark_theme](./src/darktheme.jpg)
+
+![light_theme](./src/lighttheme.jpg)
+
+
 
 ## Available Scripts
 
