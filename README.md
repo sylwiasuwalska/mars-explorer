@@ -30,7 +30,7 @@ You can see live version here: https://sylwiasuwalska.github.io/nasa-explorer/
 ## Screenshots
 ![dark_theme](./src/darktheme.jpg)
 
-![light_theme](./src/lighttheme.jpg)
+![light_theme](./src/lighttheme2.jpg)
 
 
 
