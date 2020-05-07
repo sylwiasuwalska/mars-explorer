@@ -42,6 +42,7 @@ function App() {
   const fetchTenLastPictures = (date) => {
     const dates = getLastTenDays(date)
 
+
   }
 
   useEffect(() => {

@@ -53,7 +53,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 
 ## Features
-List of features ready and TODOs for future development
+
 * display picture of the Day
 * dark/light mode
 * validation of input data
@@ -65,11 +65,5 @@ To-do list:
 * tests
 
 ## Status
-Project is in progrss.
-
-## Inspiration
-Add here credits. Project inspired by..., based on...
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Project is in progress.
 
