@@ -63,7 +63,8 @@ const Paragraph = styled.div`
   flex-flow: wrap;
   align-items: center;
   position: relative;
-  left: -40%;
+  //transform: translateX(0%);
+  left: ${(props) => props.shift};
   top: 10%;
   width: 140%;
   color: ${(props) => props.theme.secondary};
@@ -117,11 +118,11 @@ function PictureCard(props) {
         <CSSTransition in={animate} timeout={1500} classNames="fade">
           <CardContainer url={props.pictureData.url}>
             <Row>
-              <Col md={8}>
+              <Col md={{span: 8,  order: (props.order) ? 1 : 12 }} >
                 <Image url={props.pictureData.url} onClick={handleShow} />
               </Col>
-              <Col md={4}>
-                <Paragraph>
+              <Col md={{span: 4, order: (props.order) ? 12 : 1}}>
+                <Paragraph shift={props.shift}>
                   <Title>{props.pictureData.title}</Title>
                   <p>{props.pictureData.date}</p>
                   <p>{props.pictureData.explanation}</p>

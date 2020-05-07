@@ -28,7 +28,16 @@ const Line = styled.hr`
 function TenLastPictures(props) {
   const tenLastPicturesCard = Object.values(props.tenLastPictures).map(
     (element, index) => {
-      return <PictureCard key={index} pictureData={element} />;
+      const oddOrEven = index % 2;
+
+      return (
+        <PictureCard
+          key={index}
+          pictureData={element}
+          order={oddOrEven ? true : false}
+          shift={oddOrEven ? "-40%" : "0"}
+        />
+      );
     }
   );
 
