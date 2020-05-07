@@ -3,6 +3,7 @@
 
 ## Table of contents
 * [General info](#general-info)
+* [Live](#live)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#available-scripts)
@@ -13,6 +14,9 @@
 
 ## General info
 Based on NASA API website fetch data about chosen Picture of the Day. 
+
+## Live
+You can see live version here: https://sylwiasuwalska.github.io/nasa-explorer/
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
