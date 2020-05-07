@@ -44,7 +44,7 @@ function TenLastPictures(props) {
   return (
     <>
       <Line />
-      <SectionTitle>Pictures from last ten days...</SectionTitle>;
+      <SectionTitle>View pictures from last ten days...</SectionTitle>;
       {tenLastPicturesCard}
     </>
   );
