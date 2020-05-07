@@ -55,9 +55,10 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 * display picture of the Day
 * dark/light mode
 * validation of input data
+* display pictures from last ten days
 
 To-do list:
-* display pictures from last ten days
+
 * saving favourite pictures
 * user login to save favourite pictures
 * tests
