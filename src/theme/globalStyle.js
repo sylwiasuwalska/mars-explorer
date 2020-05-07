@@ -1,5 +1,6 @@
 import {createGlobalStyle} from "styled-components";
 
+
 export const light = {
     primary: "#111111",
     secondary: "#1A1A1A",
