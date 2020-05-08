@@ -112,9 +112,7 @@ function PictureCard(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const initialFavourite = localStorage.getItem(props.pictureData.date)
-    ? true
-    : false;
+  const initialFavourite = !!localStorage.getItem(props.pictureData.date)
   const [isFavourite, setIsFavourite] = useState(initialFavourite);
 
   const addRemoveToLocalStorage = () => {
