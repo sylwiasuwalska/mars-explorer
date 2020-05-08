@@ -135,7 +135,7 @@ function PictureCard(props) {
           <CardContainer url={props.pictureData.url}>
             <Row>
               <Col md={{ span: 8, order: props.order ? 1 : 12 }}>
-                <Image url={props.pictureData.url} onClick={handleShow}></Image>
+                <Image url={props.pictureData.url} onClick={handleShow}/>
               </Col>
               <Col md={{ span: 4, order: props.order ? 12 : 1 }}>
                 <Paragraph shift={props.shift}>
