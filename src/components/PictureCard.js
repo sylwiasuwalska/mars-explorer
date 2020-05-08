@@ -4,10 +4,9 @@ import { Waypoint } from "react-waypoint";
 import { Col, Row } from "react-bootstrap";
 import ModalPicture from "./ModalPicture";
 import { CSSTransition } from "react-transition-group";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
-import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
 const CardContainer = styled.div`
   text-align: center;
@@ -60,7 +59,6 @@ const Title = styled.h2`
   font-weight: 900;
   color: ${(props) => props.theme.secondary};
   font-size: 2rem;
-  
 `;
 
 const Paragraph = styled.div`
@@ -89,11 +87,7 @@ const Paragraph = styled.div`
   }
 `;
 
-const IconContainer = styled(FontAwesomeIcon)`
-
-
-
-`
+const IconContainer = styled(FontAwesomeIcon)``;
 
 const Link = styled.a`
   flex-basis: 100%;
@@ -118,10 +112,20 @@ function PictureCard(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const initialFavourite = localStorage.getItem(props.pictureData.date)
+    ? true
+    : false;
+  const [isFavourite, setIsFavourite] = useState(initialFavourite);
+
   const addRemoveToLocalStorage = () => {
-    props.isFavourite ? localStorage.removeItem(props.pictureData.date) : localStorage.setItem(props.pictureData.date, JSON.stringify(props.pictureData))
-    props.setIsFavourite(()=>(!props.isFavourite))
-  }
+    isFavourite
+      ? localStorage.removeItem(props.pictureData.date)
+      : localStorage.setItem(
+          props.pictureData.date,
+          JSON.stringify(props.pictureData)
+        );
+    setIsFavourite(!isFavourite);
+  };
 
   return (
     <Waypoint
@@ -132,14 +136,17 @@ function PictureCard(props) {
         <CSSTransition in={animate} timeout={1500} classNames="fade">
           <CardContainer url={props.pictureData.url}>
             <Row>
-              <Col md={{span: 8,  order: (props.order) ? 1 : 12 }} >
-                <Image url={props.pictureData.url} onClick={handleShow} ></Image>
+              <Col md={{ span: 8, order: props.order ? 1 : 12 }}>
+                <Image url={props.pictureData.url} onClick={handleShow}></Image>
               </Col>
-              <Col md={{span: 4, order: (props.order) ? 12 : 1}}>
+              <Col md={{ span: 4, order: props.order ? 12 : 1 }}>
                 <Paragraph shift={props.shift}>
-
                   <Title>{props.pictureData.title}</Title>
-                  <IconContainer icon={props.isFavourite ? faHeartSolid : faHeartRegular} size="2x" onClick={addRemoveToLocalStorage}/>
+                  <IconContainer
+                    icon={isFavourite ? faHeartSolid : faHeartRegular}
+                    size="2x"
+                    onClick={addRemoveToLocalStorage}
+                  />
                   <p>{props.pictureData.date}</p>
                   <p>{props.pictureData.explanation}</p>
                   <p>

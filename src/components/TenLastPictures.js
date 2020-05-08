@@ -37,7 +37,6 @@ function TenLastPictures(props) {
           pictureData={element}
           order={oddOrEven ? true : false}
           shift={oddOrEven ? "-40%" : "0"}
-          isFavourite={props.isFavourite} setIsFavourite={props.setIsFavourite}
         />
       );
     }
