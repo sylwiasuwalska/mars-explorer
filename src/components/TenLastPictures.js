@@ -26,6 +26,7 @@ const Line = styled.hr`
 }`;
 
 function TenLastPictures(props) {
+
   const tenLastPicturesCards = Object.values(props.tenLastPictures).map(
     (element, index) => {
       const oddOrEven = index % 2;
@@ -36,6 +37,7 @@ function TenLastPictures(props) {
           pictureData={element}
           order={oddOrEven ? true : false}
           shift={oddOrEven ? "-40%" : "0"}
+          isFavourite={props.isFavourite} setIsFavourite={props.setIsFavourite}
         />
       );
     }

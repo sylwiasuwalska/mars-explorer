@@ -59,7 +59,12 @@ const Paragraph = styled.p`
 `;
 
 function AppHeader(props) {
+    let initialFavourite = Object.keys(localStorage).length;
+    const  [numberFavourite, setNumberFavourite] = useState("")
 
+    useEffect(()=>{
+        setNumberFavourite(initialFavourite)
+    }, [initialFavourite])
 
   return (
     <JumbotronBackground fluid>
@@ -71,7 +76,7 @@ function AppHeader(props) {
           transform="left-3 down-1"
         />
         <span className="fa-layers-text" color="black">
-            {props.numberFavourite}
+            {numberFavourite}
         </span>
       </FavouriteContainer>
 

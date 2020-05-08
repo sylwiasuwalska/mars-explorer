@@ -112,27 +112,15 @@ const Link = styled.a`
 `;
 
 function PictureCard(props) {
-  const initialFavourite = localStorage.getItem(props.pictureData.date)===null ? false : true;
-  console.log(initialFavourite)
- // console.log(localStorage.getItem(props.pictureData.date))
-  const [isFavourite, setIsFavourite] = useState(initialFavourite);
-
   const [animate, setAnimate] = useState(false);
+
   const [show, setShow] = useState(false);
-
-
-  // localStorage.setItem('car',JSON.stringify(car));
-  // carString = localStorage.getItem('car');
-  // car = JSON.parse(carString);
-  // console.log(car.brand); // Skoda
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const addRemoveToLocalStorage = () => {
-    isFavourite ? localStorage.removeItem(props.pictureData.date) : localStorage.setItem(props.pictureData.date, JSON.stringify(props.pictureData))
-
-    setIsFavourite(!isFavourite)
+    props.isFavourite ? localStorage.removeItem(props.pictureData.date) : localStorage.setItem(props.pictureData.date, JSON.stringify(props.pictureData))
+    props.setIsFavourite(()=>(!props.isFavourite))
   }
 
   return (
@@ -151,7 +139,7 @@ function PictureCard(props) {
                 <Paragraph shift={props.shift}>
 
                   <Title>{props.pictureData.title}</Title>
-                  <IconContainer icon={isFavourite ? faHeartSolid : faHeartRegular} size="2x" onClick={addRemoveToLocalStorage}/>
+                  <IconContainer icon={props.isFavourite ? faHeartSolid : faHeartRegular} size="2x" onClick={addRemoveToLocalStorage}/>
                   <p>{props.pictureData.date}</p>
                   <p>{props.pictureData.explanation}</p>
                   <p>

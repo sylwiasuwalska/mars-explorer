@@ -16,6 +16,9 @@ function App() {
   const [pictureData, setPictureData] = useState("");
   const [tenLastPictures, setTenLastPictures] = useState("");
 
+  const initialFavourite = !(localStorage.getItem(pictureData.date)) ? false : true;
+  const [isFavourite, setIsFavourite] = useState(initialFavourite);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setDate(e.target.date.value);
@@ -61,9 +64,12 @@ function App() {
     });
   };
 
+  useEffect(()=>{
+    fetchTenLastPictures();
+  },[])
+
   useEffect(() => {
     fetchPictureData(date);
-    fetchTenLastPictures();
   }, [date]);
 
   return (
@@ -72,8 +78,8 @@ function App() {
         <GlobalStyle />
         <AppHeader setLightTheme={setLightTheme} isLightTheme={isLightTheme} />
         <Input handleSubmit={handleSubmit} />
-        <PictureCard pictureData={pictureData} />
-        <TenLastPictures tenLastPictures={tenLastPictures} />
+        <PictureCard pictureData={pictureData} isFavourite={isFavourite} setIsFavourite={setIsFavourite} />
+        <TenLastPictures tenLastPictures={tenLastPictures} isFavourite={isFavourite} setIsFavourite={setIsFavourite} />
       </ThemeProvider>
     </Fragment>
   );
