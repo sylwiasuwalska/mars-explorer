@@ -26,7 +26,7 @@ const Line = styled.hr`
 }`;
 
 function TenLastPictures(props) {
-  const tenLastPicturesCard = Object.values(props.tenLastPictures).map(
+  const tenLastPicturesCards = Object.values(props.tenLastPictures).map(
     (element, index) => {
       const oddOrEven = index % 2;
 
@@ -45,7 +45,7 @@ function TenLastPictures(props) {
     <>
       <Line />
       <SectionTitle>View pictures from last ten days...</SectionTitle>;
-      {tenLastPicturesCard}
+      {tenLastPicturesCards}
     </>
   );
 }
