@@ -1,6 +1,7 @@
 import React from "react";
 import PictureCard from "./PictureCard";
 import styled from "styled-components";
+import moment from "moment";
 
 const SectionTitle = styled.h2`
   font-family: "Lato", sans-serif;
@@ -27,15 +28,27 @@ const Line = styled.hr`
 
 function TenLastPictures(props) {
 
-  const tenLastPicturesCards = Object.values(props.tenLastPictures).map(
+    const getLastTenDays = () => {
+        let dates = [];
+        for (let i = 0; i < 10; i++) {
+            dates[i] = moment()
+                .subtract(i + 1, "days")
+                .format("YYYY-MM-DD");
+        }
+        return dates;
+    };
+
+    const dates = getLastTenDays();
+
+    const tenLastPicturesCards = dates.map(
     (element, index) => {
       const oddOrEven = index % 2;
 
       return (
         <PictureCard
           key={index}
-          pictureData={element}
-          order={oddOrEven ? true : false}
+          date={element}
+          order={!!oddOrEven}
           shift={oddOrEven ? "-40%" : "0"}
         />
       );

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Waypoint } from "react-waypoint";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import ModalPicture from "./ModalPicture";
 import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
+import axios from "axios";
 
 const CardContainer = styled.div`
   text-align: center;
@@ -112,18 +113,46 @@ function PictureCard(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const initialFavourite = !!localStorage.getItem(props.pictureData.date)
+  const [isLoading, setIsLoading] = useState(true);
+  const [pictureData, setPictureData] = useState("");
+
+  const initialFavourite = !!localStorage.getItem(props.date);
   const [isFavourite, setIsFavourite] = useState(initialFavourite);
+
+  const fetchPictureData = async (date) => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(
+        `https://api.nasa.gov/planetary/apod?date=${date}&api_key=IrU9YCmzeRGcHbJULHNnNWTIhNitiAjxTegDI4XJ`
+      );
+      setPictureData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+      //TODO handling error
+    }
+  };
 
   const addRemoveToLocalStorage = () => {
     isFavourite
-      ? localStorage.removeItem(props.pictureData.date)
-      : localStorage.setItem(
-          props.pictureData.date,
-          JSON.stringify(props.pictureData)
-        );
+      ? localStorage.removeItem(props.date)
+      : localStorage.setItem(props.date, JSON.stringify(pictureData));
     setIsFavourite(!isFavourite);
   };
+
+  useEffect(() => {
+    fetchPictureData(props.date);
+  }, [props.date]);
+
+  if (isLoading) {
+    return (
+      <CardContainer>
+        <Spinner animation="grow" variant="light" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </CardContainer>
+    );
+  }
 
   return (
     <Waypoint
@@ -132,28 +161,26 @@ function PictureCard(props) {
     >
       <div>
         <CSSTransition in={animate} timeout={1500} classNames="fade">
-          <CardContainer url={props.pictureData.url}>
+          <CardContainer>
             <Row>
               <Col md={{ span: 8, order: props.order ? 1 : 12 }}>
-                <Image url={props.pictureData.url} onClick={handleShow}/>
+                <Image url={pictureData.url} onClick={handleShow} />
               </Col>
               <Col md={{ span: 4, order: props.order ? 12 : 1 }}>
                 <Paragraph shift={props.shift}>
-                  <Title>{props.pictureData.title}</Title>
+                  <Title>{pictureData.title}</Title>
                   <IconContainer
                     icon={isFavourite ? faHeartSolid : faHeartRegular}
                     size="2x"
                     onClick={addRemoveToLocalStorage}
                   />
-                  <p>{props.pictureData.date}</p>
-                  <p>{props.pictureData.explanation}</p>
+                  <p>{pictureData.date}</p>
+                  <p>{pictureData.explanation}</p>
                   <p>
                     Copyright:{" "}
-                    {props.pictureData.copyright
-                      ? props.pictureData.copyright
-                      : "unknown"}
+                    {pictureData.copyright ? pictureData.copyright : "unknown"}
                   </p>
-                  <Link href={props.pictureData.hdurl}>HD version</Link>
+                  <Link href={pictureData.hdurl}>HD version</Link>
                 </Paragraph>
               </Col>
             </Row>
@@ -161,8 +188,8 @@ function PictureCard(props) {
             <ModalPicture
               show={show}
               handleClose={handleClose}
-              url={props.pictureData.url}
-              title={props.pictureData.title}
+              url={pictureData.url}
+              title={pictureData.title}
             />
           </CardContainer>
         </CSSTransition>

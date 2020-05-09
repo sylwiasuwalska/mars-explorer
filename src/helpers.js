@@ -1,1 +1,3 @@
-export const today = new Date().toISOString().slice(0, 10)
+import moment from "moment";
+
+export const today = moment().format("YYYY-MM-DD");
