@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Form, Jumbotron } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,13 +59,6 @@ const Paragraph = styled.p`
 `;
 
 function AppHeader(props) {
-    let initialFavourite = Object.keys(localStorage).length;
-    const  [numberFavourite, setNumberFavourite] = useState("")
-
-    useEffect(()=>{
-        setNumberFavourite(initialFavourite)
-    }, [initialFavourite])
-
   return (
     <JumbotronBackground fluid>
       <FavouriteContainer className="fa-layers fa-fw">
@@ -76,7 +69,7 @@ function AppHeader(props) {
           transform="left-3 down-1"
         />
         <span className="fa-layers-text" color="black">
-            {numberFavourite}
+          {props.numberOfFavourites}
         </span>
       </FavouriteContainer>
 

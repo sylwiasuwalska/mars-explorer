@@ -27,33 +27,31 @@ const Line = styled.hr`
 }`;
 
 function TenLastPictures(props) {
-
-    const getLastTenDays = () => {
-        let dates = [];
-        for (let i = 0; i < 10; i++) {
-            dates[i] = moment()
-                .subtract(i + 1, "days")
-                .format("YYYY-MM-DD");
-        }
-        return dates;
-    };
-
-    const dates = getLastTenDays();
-
-    const tenLastPicturesCards = dates.map(
-    (element, index) => {
-      const oddOrEven = index % 2;
-
-      return (
-        <PictureCard
-          key={index}
-          date={element}
-          order={!!oddOrEven}
-          shift={oddOrEven ? "-40%" : "0"}
-        />
-      );
+  const getLastTenDays = () => {
+    let dates = [];
+    for (let i = 0; i < 10; i++) {
+      dates[i] = moment()
+        .subtract(i + 1, "days")
+        .format("YYYY-MM-DD");
     }
-  );
+    return dates;
+  };
+
+  const dates = getLastTenDays();
+
+  const tenLastPicturesCards = dates.map((element, index) => {
+    const oddOrEven = index % 2;
+
+    return (
+      <PictureCard
+        key={index}
+        date={element}
+        order={!!oddOrEven}
+        shift={oddOrEven ? "-40%" : "0"}
+        setNumberOfFavourites={props.setNumberOfFavourites}
+      />
+    );
+  });
 
   return (
     <>

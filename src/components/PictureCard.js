@@ -134,9 +134,13 @@ function PictureCard(props) {
   };
 
   const addRemoveToLocalStorage = () => {
-    isFavourite
-      ? localStorage.removeItem(props.date)
-      : localStorage.setItem(props.date, JSON.stringify(pictureData));
+    if (isFavourite) {
+      localStorage.removeItem(props.date);
+      props.setNumberOfFavourites((prevState) => prevState - 1);
+    } else {
+      localStorage.setItem(props.date, JSON.stringify(pictureData));
+      props.setNumberOfFavourites((prevState) => prevState + 1);
+    }
     setIsFavourite(!isFavourite);
   };
 
