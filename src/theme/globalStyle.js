@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
 
 
 export const light = {
@@ -18,6 +18,29 @@ export const dark = {
     dark: "#111111",
     backgroundColor: "#000",
 };
+
+export const SectionTitle = styled.h2`
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  color: ${(props) => props.theme.secondary};
+  margin-left: 10%;
+  margin-bottom: 3%;
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    margin: 0;
+  }
+`;
+
+export const Line = styled.hr`
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid ${(props) => props.theme.secondary};
+    margin: 5% 0;
+    margin-bottom: 3%;
+    padding: 0;
+}`;
 
 const GlobalStyle = createGlobalStyle`
   

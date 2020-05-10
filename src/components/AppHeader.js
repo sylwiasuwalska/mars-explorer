@@ -11,6 +11,7 @@ const JumbotronBackground = styled(Jumbotron)`
   background-color: transparent;
   padding-top: 15vh;
   padding-bottom: 15vh;
+  margin: 0;
 `;
 
 const AppTitle = styled.h1`
