@@ -1,27 +1,22 @@
 import React, { Fragment, useState } from "react";
 import { ThemeProvider } from "styled-components";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
 import Input from "./Input";
 import PictureCard from "./PictureCard";
 import TenLastPictures from "./TenLastPictures";
 import { today } from "../helpers";
+import FavouritePictures from "./FavouritePictures";
+import Main from "./Main";
 
 function App() {
   const [isLightTheme, setLightTheme] = useState(false);
-  const [date, setDate] = useState(today);
 
   let initialNumberOfFavourites = Object.keys(localStorage).length;
   const [numberOfFavourites, setNumberOfFavourites] = useState(
     initialNumberOfFavourites
   );
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setDate(e.target.date.value);
-  };
-
   return (
     <Fragment>
       <ThemeProvider theme={isLightTheme ? light : dark}>
@@ -31,15 +26,17 @@ function App() {
           isLightTheme={isLightTheme}
           numberOfFavourites={numberOfFavourites}
         />
-        <Input handleSubmit={handleSubmit} />
-        <PictureCard
-          date={date}
-          key={100}
-          order={true}
-          shift={"-40%"}
-          setNumberOfFavourites={setNumberOfFavourites}
-        />
-        <TenLastPictures setNumberOfFavourites={setNumberOfFavourites} />
+        <Switch>
+          <Route path="/favourite">
+            <FavouritePictures
+              setLightTheme={setLightTheme}
+              isLightTheme={isLightTheme}
+            />
+          </Route>
+          <Route path="/">
+            <Main  setNumberOfFavourites={setNumberOfFavourites}/>
+          </Route>
+        </Switch>
       </ThemeProvider>
     </Fragment>
   );
