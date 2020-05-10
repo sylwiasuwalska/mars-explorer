@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import AppHeader from "./AppHeader";
 import Input from "./Input";
 import PictureCard from "./PictureCard";
 import TenLastPictures from "./TenLastPictures";
-import { ThemeProvider } from "styled-components";
 import { today } from "../helpers";
 
 function Main(props) {
