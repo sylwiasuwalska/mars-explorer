@@ -92,7 +92,7 @@ function AppHeader(props) {
           />
         </Form>
       </ModeThemeChanger>
-      <Link to="/">
+      <Link to="/nasa-explorer">
         <AppTitle>Astronomy Picture of the Day</AppTitle>
         <Paragraph>
           This is place where you can see pictures chosen by NASA as Astronomy
