@@ -1,12 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import GlobalStyle, { dark, light } from "../theme/globalStyle";
 import AppHeader from "./AppHeader";
-import Input from "./Input";
-import PictureCard from "./PictureCard";
-import TenLastPictures from "./TenLastPictures";
-import { today } from "../helpers";
+
 import FavouritePictures from "./FavouritePictures";
 import Main from "./Main";
 
@@ -27,14 +24,14 @@ function App() {
           numberOfFavourites={numberOfFavourites}
         />
         <Switch>
+          <Route exact path="/">
+            <Main setNumberOfFavourites={setNumberOfFavourites} />
+          </Route>
           <Route path="/favourite">
             <FavouritePictures
               setLightTheme={setLightTheme}
               isLightTheme={isLightTheme}
             />
-          </Route>
-          <Route path="/">
-            <Main  setNumberOfFavourites={setNumberOfFavourites}/>
           </Route>
         </Switch>
       </ThemeProvider>

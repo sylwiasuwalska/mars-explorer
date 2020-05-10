@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Form, Jumbotron } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -62,19 +62,19 @@ const Paragraph = styled.p`
 function AppHeader(props) {
   return (
     <JumbotronBackground fluid>
-        <Link to="/favourite">
-      <FavouriteContainer className="fa-layers fa-fw">
-        <FontAwesomeIcon
-          icon={faHeart}
-          color="white"
-          size="2x"
-          transform="left-3 down-1"
-        />
-        <span className="fa-layers-text" color="black">
-          {props.numberOfFavourites}
-        </span>
-      </FavouriteContainer>
-        </Link>
+      <Link to="/favourite">
+        <FavouriteContainer className="fa-layers fa-fw">
+          <FontAwesomeIcon
+            icon={faHeart}
+            color="white"
+            size="2x"
+            transform="left-3 down-1"
+          />
+          <span className="fa-layers-text" color="black">
+            {props.numberOfFavourites}
+          </span>
+        </FavouriteContainer>
+      </Link>
       <ModeThemeChanger>
         <Form>
           <Form.Switch
@@ -92,13 +92,13 @@ function AppHeader(props) {
           />
         </Form>
       </ModeThemeChanger>
-        <Link to="/">
-      <AppTitle>Astronomy Picture of the Day</AppTitle>
-      <Paragraph>
-        This is place where you can see pictures chosen by NASA as Astronomy
-        Picture of the Day. Set the date and explore!
-      </Paragraph>
-        </Link>
+      <Link to="/">
+        <AppTitle>Astronomy Picture of the Day</AppTitle>
+        <Paragraph>
+          This is place where you can see pictures chosen by NASA as Astronomy
+          Picture of the Day. Set the date and explore!
+        </Paragraph>
+      </Link>
     </JumbotronBackground>
   );
 }

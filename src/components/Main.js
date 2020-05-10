@@ -1,25 +1,22 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import AppHeader from "./AppHeader";
 import Input from "./Input";
 import PictureCard from "./PictureCard";
 import TenLastPictures from "./TenLastPictures";
 import { ThemeProvider } from "styled-components";
-import {today} from "../helpers";
+import { today } from "../helpers";
 
 function Main(props) {
+  const [date, setDate] = useState(today);
 
-    const [date, setDate] = useState(today);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setDate(e.target.date.value);
+  };
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setDate(e.target.date.value);
-    };
-
-    return (
+  return (
     <>
       {" "}
-
       <Input handleSubmit={handleSubmit} />
       <PictureCard
         date={date}
