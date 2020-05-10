@@ -18,6 +18,7 @@ You can see live version here: https://sylwiasuwalska.github.io/nasa-explorer/
 
 ## Technologies
 * ReactJS with Hooks, version 16.13.1
+* React Router, version 5.1.2
 * React Bootstrap, version 1.0.1
 * Styled Components, version 5.1.0
 * React Transition Group, version 4.3.0
@@ -32,7 +33,7 @@ You can see live version here: https://sylwiasuwalska.github.io/nasa-explorer/
 
 
 
-## Available Scripts
+## Setup
 
 In the project directory, you can run:
 
