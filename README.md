@@ -57,6 +57,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 * dark/light mode
 * validation of input data
 * display pictures from last ten days
+* page with users favourites pictures 
 
 To-do list:
 
