@@ -1,6 +1,5 @@
 import React from "react";
 import PictureCard from "./PictureCard";
-import styled from "styled-components";
 import moment from "moment";
 import { SectionTitle, Line } from "../theme/globalStyle";
 
