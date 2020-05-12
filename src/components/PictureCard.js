@@ -145,7 +145,14 @@ function PictureCard(props) {
   };
 
   useEffect(() => {
-    fetchPictureData(props.date);
+    if (localStorage.getItem(props.date)) {
+      const localStorageData = JSON.parse(localStorage.getItem(props.date));
+      console.log("here")
+      setPictureData(localStorageData);
+      setIsLoading(false);
+    } else {
+      fetchPictureData(props.date);
+    }
   }, [props.date]);
 
   if (isLoading) {
