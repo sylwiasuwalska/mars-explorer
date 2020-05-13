@@ -3,14 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Form, Jumbotron, OverlayTrigger } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSun,
-  faMoon,
-  faHeart,
-  faHeart as faHeartSolid,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { renderTooltipForFavouritePage } from "./tooltips";
-import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
 const JumbotronBackground = styled(Jumbotron)`
   background-image: url("https://apod.nasa.gov/apod/image/2004/STSCI-H-p2016a-m-2000x1374.jpg");
