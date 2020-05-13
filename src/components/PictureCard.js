@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Waypoint } from "react-waypoint";
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Col, OverlayTrigger, Row, Spinner } from "react-bootstrap";
 import ModalPicture from "./ModalPicture";
 import { CSSTransition } from "react-transition-group";
+import { renderTooltipForAdding } from "./tooltips";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
@@ -88,7 +89,11 @@ const Paragraph = styled.div`
   }
 `;
 
-const IconContainer = styled(FontAwesomeIcon)``;
+const FavouriteIconContainer = styled.button`
+  background-color: transparent;
+  border: none;
+  color: ${(props) => props.theme.secondary};
+`;
 
 const Link = styled.a`
   flex-basis: 100%;
@@ -147,7 +152,7 @@ function PictureCard(props) {
   useEffect(() => {
     if (localStorage.getItem(props.date)) {
       const localStorageData = JSON.parse(localStorage.getItem(props.date));
-      console.log("here")
+      console.log("here");
       setPictureData(localStorageData);
       setIsLoading(false);
     } else {
@@ -171,7 +176,7 @@ function PictureCard(props) {
       onLeave={() => setAnimate(false)}
     >
       <div>
-        <CSSTransition in={animate} timeout={1500} classNames="fade">
+        <CSSTransition in={animate} timeout={1000} classNames="fade">
           <CardContainer>
             <Row>
               <Col md={{ span: 8, order: props.order ? 1 : 12 }}>
@@ -180,11 +185,18 @@ function PictureCard(props) {
               <Col md={{ span: 4, order: props.order ? 12 : 1 }}>
                 <Paragraph shift={props.shift}>
                   <Title>{pictureData.title}</Title>
-                  <IconContainer
-                    icon={isFavourite ? faHeartSolid : faHeartRegular}
-                    size="2x"
-                    onClick={addRemoveToLocalStorage}
-                  />
+                  <OverlayTrigger
+                    placement="top"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltipForAdding}
+                  >
+                    <FavouriteIconContainer onClick={addRemoveToLocalStorage}>
+                      <FontAwesomeIcon
+                        icon={isFavourite ? faHeartSolid : faHeartRegular}
+                        size="2x"
+                      />
+                    </FavouriteIconContainer>
+                  </OverlayTrigger>
                   <p>{pictureData.date}</p>
                   <p>{pictureData.explanation}</p>
                   <p>
