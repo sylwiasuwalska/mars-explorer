@@ -8,3 +8,11 @@ export const renderTooltipForAdding = (props) => {
         </Tooltip>
     );
 }
+
+export const renderTooltipForFavouritePage = (props) => {
+    return (
+        <Tooltip id="button-tooltip" {...props}>
+            See your favourites
+        </Tooltip>
+    );
+}

@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Form, Jumbotron } from "react-bootstrap";
+import { Form, Jumbotron, OverlayTrigger } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon, faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSun,
+  faMoon,
+  faHeart,
+  faHeart as faHeartSolid,
+} from "@fortawesome/free-solid-svg-icons";
+import { renderTooltipForFavouritePage } from "./tooltips";
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
 const JumbotronBackground = styled(Jumbotron)`
   background-image: url("https://apod.nasa.gov/apod/image/2004/STSCI-H-p2016a-m-2000x1374.jpg");
@@ -27,7 +34,9 @@ const AppTitle = styled.h1`
   }
 `;
 
-const FavouriteContainer = styled.span`
+const FavouriteContainer = styled.button`
+  background-color: transparent;
+  border: none;
   display: flex;
   align-items: center;
   position: fixed;
@@ -65,17 +74,24 @@ function AppHeader(props) {
     <JumbotronBackground fluid>
       <Link to="/favourite">
         <FavouriteContainer className="fa-layers fa-fw">
-          <FontAwesomeIcon
-            icon={faHeart}
-            color="white"
-            size="2x"
-            transform="left-3 down-1"
-          />
+          <OverlayTrigger
+            placement="right"
+            delay={{ show: 250, hide: 400 }}
+            overlay={renderTooltipForFavouritePage}
+          >
+            <FontAwesomeIcon
+              icon={faHeart}
+              color="white"
+              size="2x"
+              transform="left-3 down-1"
+            />
+          </OverlayTrigger>
           <span className="fa-layers-text" color="black">
             {props.numberOfFavourites}
           </span>
         </FavouriteContainer>
       </Link>
+
       <ModeThemeChanger>
         <Form>
           <Form.Switch
