@@ -5,6 +5,7 @@ import { faLongArrowAltLeft } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { SectionTitle, Line } from "../theme/globalStyle";
 import { Button } from "react-bootstrap";
+import { renderPictureCards } from "../helpers";
 
 const BackButton = styled(Button)`
   border-radius: 0;
@@ -17,6 +18,12 @@ const BackButton = styled(Button)`
 
 function FavouritePictures(props) {
   let history = useHistory();
+  const favouritePictures = Object.keys(localStorage);
+  const favouritePicturesCard = renderPictureCards(
+    favouritePictures,
+    props.setNumberOfFavourites
+  );
+
   return (
     <>
       <BackButton variant="secondary" onClick={() => history.goBack()}>
@@ -24,6 +31,7 @@ function FavouritePictures(props) {
       </BackButton>
       <Line />
       <SectionTitle>Your favourite pictures</SectionTitle>
+      {favouritePicturesCard}
     </>
   );
 }
