@@ -28,10 +28,7 @@ function App() {
             <Main setNumberOfFavourites={setNumberOfFavourites} />
           </Route>
           <Route path="/favourite">
-            <FavouritePictures
-              setLightTheme={setLightTheme}
-              isLightTheme={isLightTheme}
-            />
+            <FavouritePictures setNumberOfFavourites={setNumberOfFavourites} />
           </Route>
         </Switch>
       </ThemeProvider>
