@@ -4,11 +4,12 @@ import { Waypoint } from "react-waypoint";
 import { Col, OverlayTrigger, Row, Spinner } from "react-bootstrap";
 import ModalPicture from "./ModalPicture";
 import { CSSTransition } from "react-transition-group";
-import { renderTooltipForAdding } from "./tooltips";
+import { renderTooltipForAdding } from "../helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
+import ReactPlayer from "react-player";
 
 const CardContainer = styled.div`
   text-align: center;
@@ -152,7 +153,6 @@ function PictureCard(props) {
   useEffect(() => {
     if (localStorage.getItem(props.date)) {
       const localStorageData = JSON.parse(localStorage.getItem(props.date));
-      console.log("here");
       setPictureData(localStorageData);
       setIsLoading(false);
     } else {
@@ -160,6 +160,7 @@ function PictureCard(props) {
     }
   }, [props.date]);
 
+  console.log(pictureData);
   if (isLoading) {
     return (
       <CardContainer>
@@ -180,7 +181,9 @@ function PictureCard(props) {
           <CardContainer>
             <Row>
               <Col md={{ span: 8, order: props.order ? 1 : 12 }}>
-                <Image url={pictureData.url} onClick={handleShow} />
+                  {pictureData.media_type==="image" ? <Image url={pictureData.url} onClick={handleShow} /> : <ReactPlayer url={pictureData.url} height="800px" width="100%" /> }
+
+
               </Col>
               <Col md={{ span: 4, order: props.order ? 12 : 1 }}>
                 <Paragraph shift={props.shift}>
