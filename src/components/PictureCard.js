@@ -22,8 +22,8 @@ const CardContainer = styled.div`
 
   &.fade-enter-active {
     opacity: 1;
-    transition: all 3500ms;
-    animation: bounceIn 1.5s ease-in;
+    transition: all 1500ms;
+    animation: bounceIn 1000ms ease-in;
   }
 
   &.fade-exit {
@@ -38,9 +38,6 @@ const CardContainer = styled.div`
   @keyframes bounceIn {
     0% {
       transform: scale(0.95);
-    }
-    50% {
-      transform: scale(0.975);
     }
     100% {
       transform: scale(1);
