@@ -15,6 +15,12 @@ const JumbotronBackground = styled(Jumbotron)`
   margin: 0;
 `;
 
+const NoHoverLink = styled(Link)`
+    &:hover {
+  text-decoration: none;
+  }
+`;
+
 const AppTitle = styled.h1`
   font-family: "Lato", sans-serif;
   font-weight: 900;
@@ -103,13 +109,13 @@ function AppHeader(props) {
           />
         </Form>
       </ModeThemeChanger>
-      <Link to="/nasa-explorer">
+      <NoHoverLink to="/nasa-explorer">
         <AppTitle>Astronomy Picture of the Day</AppTitle>
         <Paragraph>
           This is place where you can see pictures chosen by NASA as Astronomy
           Picture of the Day. Set the date and explore!
         </Paragraph>
-      </Link>
+      </NoHoverLink>
     </JumbotronBackground>
   );
 }
