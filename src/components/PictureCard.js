@@ -52,6 +52,10 @@ const Image = styled.div`
   height: 800px;
   width: 100%;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+  height: 50vh;
+  }
 `;
 
 const Title = styled.h2`
@@ -59,6 +63,10 @@ const Title = styled.h2`
   font-weight: 900;
   color: ${(props) => props.theme.secondary};
   font-size: 2rem;
+    @media (max-width: 768px) {
+
+    font-size: 1rem;
+  }
 `;
 
 const Paragraph = styled.div`
@@ -84,6 +92,7 @@ const Paragraph = styled.div`
   @media (max-width: 768px) {
     position: initial;
     width: 100%;
+    font-size: 0.75rem;
   }
 `;
 
@@ -178,9 +187,15 @@ function PictureCard(props) {
           <CardContainer>
             <Row>
               <Col md={{ span: 8, order: props.order ? 1 : 12 }}>
-                  {pictureData.media_type==="image" ? <Image url={pictureData.url} onClick={handleShow} /> : <ReactPlayer url={pictureData.url} height="800px" width="100%" /> }
-
-
+                {pictureData.media_type === "image" ? (
+                  <Image url={pictureData.url} onClick={handleShow} />
+                ) : (
+                  <ReactPlayer
+                    url={pictureData.url}
+                    height="800px"
+                    width="100%"
+                  />
+                )}
               </Col>
               <Col md={{ span: 4, order: props.order ? 12 : 1 }}>
                 <Paragraph shift={props.shift}>
