@@ -24,7 +24,7 @@ function App() {
           numberOfFavourites={numberOfFavourites}
         />
         <Switch>
-          <Route exact path="/nasa-explorer">
+          <Route exact path="/">
             <Main setNumberOfFavourites={setNumberOfFavourites} />
           </Route>
           <Route path="/favourite">

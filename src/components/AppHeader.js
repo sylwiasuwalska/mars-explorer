@@ -109,7 +109,7 @@ function AppHeader(props) {
           />
         </Form>
       </ModeThemeChanger>
-      <NoHoverLink to="/nasa-explorer">
+      <NoHoverLink to="/">
         <AppTitle>Astronomy Picture of the Day</AppTitle>
         <Paragraph>
           This is place where you can see pictures chosen by NASA as Astronomy
