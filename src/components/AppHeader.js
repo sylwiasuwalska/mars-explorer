@@ -16,8 +16,8 @@ const JumbotronBackground = styled(Jumbotron)`
 `;
 
 const NoHoverLink = styled(Link)`
-    &:hover {
-  text-decoration: none;
+  &:hover {
+    text-decoration: none;
   }
 `;
 
@@ -109,7 +109,7 @@ function AppHeader(props) {
           />
         </Form>
       </ModeThemeChanger>
-      <NoHoverLink to="/">
+      <NoHoverLink to="/nasa-explorer">
         <AppTitle>Astronomy Picture of the Day</AppTitle>
         <Paragraph>
           This is place where you can see pictures chosen by NASA as Astronomy
