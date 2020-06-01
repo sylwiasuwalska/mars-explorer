@@ -55,13 +55,14 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 * display picture of the Day
 * dark/light mode
+* basic responsive version for mobiles
 * validation of input data
 * display pictures from last ten days
+* saving favourite pictures to localstorage
 * page with users favourites pictures 
 
 To-do list:
 
-* saving favourite pictures
 * user login to save favourite pictures
 * tests
 
