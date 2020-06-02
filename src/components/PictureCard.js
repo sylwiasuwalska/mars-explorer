@@ -111,6 +111,7 @@ const Link = styled.a`
   color: ${(props) => props.theme.secondary};
   margin: 10px;
   padding: 10px 20px;
+  text-align: center;
 
   &:hover {
     text-decoration: none;
@@ -220,7 +221,7 @@ function PictureCard(props) {
                     Copyright:{" "}
                     {pictureData.copyright ? pictureData.copyright : "unknown"}
                   </p>
-                  <Link href={pictureData.hdurl}>HD version</Link>
+                  <Link href={pictureData.hdurl} target="_blank">HD version - click to open in a new tab</Link>
                 </Paragraph>
               </Col>
             </Row>
