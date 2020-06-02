@@ -70,6 +70,7 @@ const Title = styled.h2`
 `;
 
 const Paragraph = styled.div`
+  z-index: 5;
   display: flex;
   flex-flow: wrap;
   align-items: center;
