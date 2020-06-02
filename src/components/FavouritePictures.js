@@ -14,6 +14,9 @@ const BackButton = styled(Button)`
   background-color: ${(props) => props.theme.backgroundColor};
   position: relative;
   left: 10%;
+  @media (max-width: 768px) {
+   left: 0;
+  }
 `;
 
 function FavouritePictures(props) {
@@ -30,7 +33,7 @@ function FavouritePictures(props) {
         <FontAwesomeIcon icon={faLongArrowAltLeft} /> take me back
       </BackButton>
       <Line />
-      <SectionTitle>Your favourite pictures</SectionTitle>
+      <SectionTitle>{favouritePictures.length > 0 ? "Your favourite pictures:" : "Currently, you don't have favourite pictures."}</SectionTitle>
       {favouritePicturesCard}
     </>
   );
