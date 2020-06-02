@@ -157,6 +157,8 @@ function PictureCard(props) {
   };
 
   useEffect(() => {
+    const isNewDateFav = !!localStorage.getItem(props.date);
+    setIsFavourite(isNewDateFav);
     if (localStorage.getItem(props.date)) {
       const localStorageData = JSON.parse(localStorage.getItem(props.date));
       setPictureData(localStorageData);
@@ -166,7 +168,6 @@ function PictureCard(props) {
     }
   }, [props.date]);
 
-  console.log(pictureData);
   if (isLoading) {
     return (
       <CardContainer>
