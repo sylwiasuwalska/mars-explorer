@@ -1,5 +1,4 @@
 import React from "react";
-import PictureCard from "./PictureCard";
 import moment from "moment";
 import { SectionTitle, Line } from "../theme/globalStyle";
 import { renderPictureCards } from "../helpers";
